@@ -1,0 +1,2223 @@
+[
+    {
+        "question": "who played forrest gump as a kid?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.0bdjd)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.0bdjd ns:film.film.starring ?y .\n?y ns:film.performance.actor ?x .\n?y ns:film.performance.character ns:m.0264f7h .\n?y ns:film.performance.character_note ?sk0 .\nFILTER (str(?sk0) = \"Young Forrest\")\n}\n",
+        "PotentialTopicEntityMention": "forrest gump",
+        "TopicEntityName": "Forrest Gump",
+        "TopicEntityMid": "m.0bdjd",
+        "InferentialChain": [
+            "film.film.starring",
+            "film.performance.actor"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.0264f7h",
+                "EntityName": "Forrest Gump",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "film.performance.character",
+                "ValueType": "String"
+            },
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Value",
+                "Argument": "Young Forrest",
+                "EntityName": "",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "film.performance.character_note",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0bdjd"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0bdjd"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/film.film.starring"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/film.performance.actor"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/film.performance.character"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0264f7h"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/film.performance.character_note"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "sk0"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "=",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "str",
+                                "args": [
+                                    {
+                                        "termType": "Variable",
+                                        "value": "sk0"
+                                    }
+                                ]
+                            },
+                            {
+                                "termType": "Literal",
+                                "value": "Young Forrest",
+                                "language": "",
+                                "datatype": {
+                                    "termType": "NamedNode",
+                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "who succeeded william mckinley as president?",
+        "sparql": "#MANUAL SPARQL\nPREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT  ?x\nWHERE {\n  ns:m.060d2 ns:government.government_office_or_title.office_holders ?y1 .  # President of the United States\n  ?y1 ns:government.government_position_held.office_holder ns:m.083p7 ; # William McKinley\n      ns:government.government_position_held.to ?to .\n\n  ns:m.060d2 ns:government.government_office_or_title.office_holders ?y2 .  # President of the United States\n  ?y2 ns:government.government_position_held.office_holder ?x ;\n      ns:government.government_position_held.to ?from .\n  \n  FILTER(xsd:dateTime(?from) - xsd:dateTime(?to) > 0)\n}\nORDER BY xsd:dateTime(?from)\nLIMIT 1",
+        "PotentialTopicEntityMention": "william mckinley",
+        "TopicEntityName": "William McKinley",
+        "TopicEntityMid": "m.083p7",
+        "InferentialChain": null,
+        "Constraints": [],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.060d2"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_office_or_title.office_holders"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y1"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y1"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_position_held.office_holder"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.083p7"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y1"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_position_held.to"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "to"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.060d2"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_office_or_title.office_holders"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y2"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y2"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_position_held.office_holder"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y2"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/government.government_position_held.to"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "from"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": ">",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "-",
+                                "args": [
+                                    {
+                                        "type": "functionCall",
+                                        "function": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                        },
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "from"
+                                            }
+                                        ],
+                                        "distinct": false
+                                    },
+                                    {
+                                        "type": "functionCall",
+                                        "function": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                        },
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "to"
+                                            }
+                                        ],
+                                        "distinct": false
+                                    }
+                                ]
+                            },
+                            {
+                                "termType": "Literal",
+                                "value": "0",
+                                "language": "",
+                                "datatype": {
+                                    "termType": "NamedNode",
+                                    "value": "http://www.w3.org/2001/XMLSchema#integer"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "order": [
+                {
+                    "expression": {
+                        "type": "functionCall",
+                        "function": {
+                            "termType": "NamedNode",
+                            "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                        },
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "from"
+                            }
+                        ],
+                        "distinct": false
+                    }
+                }
+            ],
+            "limit": 1,
+            "type": "query",
+            "prefixes": {
+                "xsd": "http://www.w3.org/2001/XMLSchema#",
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "where did heidi klum and seal get married?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.01pctb)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.01pctb ns:people.person.spouse_s ?y .\n?y ns:people.marriage.location_of_ceremony ?x .\n?y ns:people.marriage.spouse ns:m.01vsykc .\n?y ns:people.marriage.type_of_union ns:m.04ztj .\n}\n",
+        "PotentialTopicEntityMention": "heidi klum",
+        "TopicEntityName": "Heidi Klum",
+        "TopicEntityMid": "m.01pctb",
+        "InferentialChain": [
+            "people.person.spouse_s",
+            "people.marriage.location_of_ceremony"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.01vsykc",
+                "EntityName": "Seal",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "people.marriage.spouse",
+                "ValueType": "String"
+            },
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.04ztj",
+                "EntityName": "Marriage",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "people.marriage.type_of_union",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01pctb"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01pctb"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/people.person.spouse_s"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/people.marriage.location_of_ceremony"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/people.marriage.spouse"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01vsykc"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/people.marriage.type_of_union"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.04ztj"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "who plays the voice of meg in family guy?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.019nnl)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.019nnl ns:tv.tv_program.regular_cast ?y .\n?y ns:tv.regular_tv_appearance.actor ?x .\n?y ns:tv.regular_tv_appearance.character ns:m.035szd .\n?y ns:tv.regular_tv_appearance.special_performance_type ns:m.02nsjvf .\nFILTER(NOT EXISTS {?y ns:tv.regular_tv_appearance.from ?sk0} || \nEXISTS {?y ns:tv.regular_tv_appearance.from ?sk1 . \nFILTER(xsd:datetime(?sk1) <= \"2015-08-10\"^^xsd:dateTime) })\nFILTER(NOT EXISTS {?y ns:tv.regular_tv_appearance.to ?sk2} || \nEXISTS {?y ns:tv.regular_tv_appearance.to ?sk3 . \nFILTER(xsd:datetime(?sk3) >= \"2015-08-10\"^^xsd:dateTime) })\n}\n",
+        "PotentialTopicEntityMention": "family guy",
+        "TopicEntityName": "Family Guy",
+        "TopicEntityMid": "m.019nnl",
+        "InferentialChain": [
+            "tv.tv_program.regular_cast",
+            "tv.regular_tv_appearance.actor"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.035szd",
+                "EntityName": "Meg Griffin",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "tv.regular_tv_appearance.character",
+                "ValueType": "String"
+            },
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.02nsjvf",
+                "EntityName": "Voice",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "tv.regular_tv_appearance.special_performance_type",
+                "ValueType": "String"
+            },
+            {
+                "Operator": "LessOrEqual",
+                "ArgumentType": "Value",
+                "Argument": "2015-08-10",
+                "EntityName": "",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "tv.regular_tv_appearance.from",
+                "ValueType": "DateTime"
+            },
+            {
+                "Operator": "GreaterOrEqual",
+                "ArgumentType": "Value",
+                "Argument": "2015-08-10",
+                "EntityName": "",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "tv.regular_tv_appearance.to",
+                "ValueType": "DateTime"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.019nnl"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.019nnl"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.tv_program.regular_cast"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.actor"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.character"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.035szd"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.special_performance_type"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.02nsjvf"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "notexists",
+                                "args": [
+                                    {
+                                        "type": "bgp",
+                                        "triples": [
+                                            {
+                                                "subject": {
+                                                    "termType": "Variable",
+                                                    "value": "y"
+                                                },
+                                                "predicate": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.from"
+                                                },
+                                                "object": {
+                                                    "termType": "Variable",
+                                                    "value": "sk0"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "exists",
+                                "args": [
+                                    {
+                                        "type": "group",
+                                        "patterns": [
+                                            {
+                                                "type": "bgp",
+                                                "triples": [
+                                                    {
+                                                        "subject": {
+                                                            "termType": "Variable",
+                                                            "value": "y"
+                                                        },
+                                                        "predicate": {
+                                                            "termType": "NamedNode",
+                                                            "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.from"
+                                                        },
+                                                        "object": {
+                                                            "termType": "Variable",
+                                                            "value": "sk1"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "filter",
+                                                "expression": {
+                                                    "type": "operation",
+                                                    "operator": "<=",
+                                                    "args": [
+                                                        {
+                                                            "type": "functionCall",
+                                                            "function": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#datetime"
+                                                            },
+                                                            "args": [
+                                                                {
+                                                                    "termType": "Variable",
+                                                                    "value": "sk1"
+                                                                }
+                                                            ],
+                                                            "distinct": false
+                                                        },
+                                                        {
+                                                            "termType": "Literal",
+                                                            "value": "2015-08-10",
+                                                            "language": "",
+                                                            "datatype": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "notexists",
+                                "args": [
+                                    {
+                                        "type": "bgp",
+                                        "triples": [
+                                            {
+                                                "subject": {
+                                                    "termType": "Variable",
+                                                    "value": "y"
+                                                },
+                                                "predicate": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.to"
+                                                },
+                                                "object": {
+                                                    "termType": "Variable",
+                                                    "value": "sk2"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "exists",
+                                "args": [
+                                    {
+                                        "type": "group",
+                                        "patterns": [
+                                            {
+                                                "type": "bgp",
+                                                "triples": [
+                                                    {
+                                                        "subject": {
+                                                            "termType": "Variable",
+                                                            "value": "y"
+                                                        },
+                                                        "predicate": {
+                                                            "termType": "NamedNode",
+                                                            "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.to"
+                                                        },
+                                                        "object": {
+                                                            "termType": "Variable",
+                                                            "value": "sk3"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "filter",
+                                                "expression": {
+                                                    "type": "operation",
+                                                    "operator": ">=",
+                                                    "args": [
+                                                        {
+                                                            "type": "functionCall",
+                                                            "function": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#datetime"
+                                                            },
+                                                            "args": [
+                                                                {
+                                                                    "termType": "Variable",
+                                                                    "value": "sk3"
+                                                                }
+                                                            ],
+                                                            "distinct": false
+                                                        },
+                                                        {
+                                                            "termType": "Literal",
+                                                            "value": "2015-08-10",
+                                                            "language": "",
+                                                            "datatype": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "xsd": "http://www.w3.org/2001/XMLSchema#",
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what season did jason priestley leave 90210?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.0n2bh)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.0n2bh ns:tv.tv_program.regular_cast ?y .\n?y ns:tv.regular_tv_appearance.seasons ?x .\n?y ns:tv.regular_tv_appearance.actor ns:m.01gc7h .\n?x ns:tv.tv_series_season.to ?sk0 .\n}\nORDER BY DESC(xsd:datetime(?sk0))\nLIMIT 1\n",
+        "PotentialTopicEntityMention": "90210",
+        "TopicEntityName": "Beverly Hills, 90210",
+        "TopicEntityMid": "m.0n2bh",
+        "InferentialChain": [
+            "tv.tv_program.regular_cast",
+            "tv.regular_tv_appearance.seasons"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.01gc7h",
+                "EntityName": "Jason Priestley",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "tv.regular_tv_appearance.actor",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0n2bh"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0n2bh"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.tv_program.regular_cast"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.seasons"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.regular_tv_appearance.actor"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01gc7h"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/tv.tv_series_season.to"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "sk0"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "order": [
+                {
+                    "expression": {
+                        "type": "functionCall",
+                        "function": {
+                            "termType": "NamedNode",
+                            "value": "http://www.w3.org/2001/XMLSchema#datetime"
+                        },
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "sk0"
+                            }
+                        ],
+                        "distinct": false
+                    },
+                    "descending": true
+                }
+            ],
+            "limit": 1,
+            "type": "query",
+            "prefixes": {
+                "xsd": "http://www.w3.org/2001/XMLSchema#",
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what did julia roberts won an oscar for?",
+        "sparql": "#MANUAL SPARQL\nPREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT  ?x\nWHERE {\n  ns:m.046zh ns:award.award_winner.awards_won ?y .\t# Julia Roberts\n  ?y ns:award.award_honor.honored_for ?x .\n  ?y ns:award.award_honor.award ?awd .\n  ?awd ns:award.award_category.category_of ns:m.0g_w .  # Academy Awards\n}",
+        "PotentialTopicEntityMention": "julia roberts",
+        "TopicEntityName": "Julia Roberts",
+        "TopicEntityMid": "m.046zh",
+        "InferentialChain": [
+            "award.award_winner.awards_won",
+            "award.award_honor.honored_for"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.0gqwc",
+                "EntityName": "Academy Award for Best Actress",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "award.award_honor.award",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.046zh"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/award.award_winner.awards_won"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/award.award_honor.honored_for"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/award.award_honor.award"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "awd"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "awd"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/award.award_category.category_of"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0g_w"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what did charles babbage create in the 1800s?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.01qmz)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.01qmz ns:law.inventor.inventions ?x .\nFILTER(NOT EXISTS {?x ns:law.invention.date_of_invention ?sk0} || \nEXISTS {?x ns:law.invention.date_of_invention ?sk1 . \nFILTER(xsd:datetime(?sk1) >= \"1800-01-01\"^^xsd:dateTime) })\nFILTER(NOT EXISTS {?x ns:law.invention.date_of_invention ?sk2} || \nEXISTS {?x ns:law.invention.date_of_invention ?sk3 . \nFILTER(xsd:datetime(?sk3) <= \"1899-12-31\"^^xsd:dateTime) })\n}\n",
+        "PotentialTopicEntityMention": "charles babbage",
+        "TopicEntityName": "Charles Babbage",
+        "TopicEntityMid": "m.01qmz",
+        "InferentialChain": [
+            "law.inventor.inventions"
+        ],
+        "Constraints": [
+            {
+                "Operator": "GreaterOrEqual",
+                "ArgumentType": "Value",
+                "Argument": "1800-01-01",
+                "EntityName": "",
+                "SourceNodeIndex": 1,
+                "NodePredicate": "law.invention.date_of_invention",
+                "ValueType": "DateTime"
+            },
+            {
+                "Operator": "LessOrEqual",
+                "ArgumentType": "Value",
+                "Argument": "1899-12-31",
+                "EntityName": "",
+                "SourceNodeIndex": 1,
+                "NodePredicate": "law.invention.date_of_invention",
+                "ValueType": "DateTime"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01qmz"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01qmz"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/law.inventor.inventions"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "notexists",
+                                "args": [
+                                    {
+                                        "type": "bgp",
+                                        "triples": [
+                                            {
+                                                "subject": {
+                                                    "termType": "Variable",
+                                                    "value": "x"
+                                                },
+                                                "predicate": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://rdf.freebase.com/ns/law.invention.date_of_invention"
+                                                },
+                                                "object": {
+                                                    "termType": "Variable",
+                                                    "value": "sk0"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "exists",
+                                "args": [
+                                    {
+                                        "type": "group",
+                                        "patterns": [
+                                            {
+                                                "type": "bgp",
+                                                "triples": [
+                                                    {
+                                                        "subject": {
+                                                            "termType": "Variable",
+                                                            "value": "x"
+                                                        },
+                                                        "predicate": {
+                                                            "termType": "NamedNode",
+                                                            "value": "http://rdf.freebase.com/ns/law.invention.date_of_invention"
+                                                        },
+                                                        "object": {
+                                                            "termType": "Variable",
+                                                            "value": "sk1"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "filter",
+                                                "expression": {
+                                                    "type": "operation",
+                                                    "operator": ">=",
+                                                    "args": [
+                                                        {
+                                                            "type": "functionCall",
+                                                            "function": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#datetime"
+                                                            },
+                                                            "args": [
+                                                                {
+                                                                    "termType": "Variable",
+                                                                    "value": "sk1"
+                                                                }
+                                                            ],
+                                                            "distinct": false
+                                                        },
+                                                        {
+                                                            "termType": "Literal",
+                                                            "value": "1800-01-01",
+                                                            "language": "",
+                                                            "datatype": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "notexists",
+                                "args": [
+                                    {
+                                        "type": "bgp",
+                                        "triples": [
+                                            {
+                                                "subject": {
+                                                    "termType": "Variable",
+                                                    "value": "x"
+                                                },
+                                                "predicate": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://rdf.freebase.com/ns/law.invention.date_of_invention"
+                                                },
+                                                "object": {
+                                                    "termType": "Variable",
+                                                    "value": "sk2"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "exists",
+                                "args": [
+                                    {
+                                        "type": "group",
+                                        "patterns": [
+                                            {
+                                                "type": "bgp",
+                                                "triples": [
+                                                    {
+                                                        "subject": {
+                                                            "termType": "Variable",
+                                                            "value": "x"
+                                                        },
+                                                        "predicate": {
+                                                            "termType": "NamedNode",
+                                                            "value": "http://rdf.freebase.com/ns/law.invention.date_of_invention"
+                                                        },
+                                                        "object": {
+                                                            "termType": "Variable",
+                                                            "value": "sk3"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "filter",
+                                                "expression": {
+                                                    "type": "operation",
+                                                    "operator": "<=",
+                                                    "args": [
+                                                        {
+                                                            "type": "functionCall",
+                                                            "function": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#datetime"
+                                                            },
+                                                            "args": [
+                                                                {
+                                                                    "termType": "Variable",
+                                                                    "value": "sk3"
+                                                                }
+                                                            ],
+                                                            "distinct": false
+                                                        },
+                                                        {
+                                                            "termType": "Literal",
+                                                            "value": "1899-12-31",
+                                                            "language": "",
+                                                            "datatype": {
+                                                                "termType": "NamedNode",
+                                                                "value": "http://www.w3.org/2001/XMLSchema#dateTime"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "xsd": "http://www.w3.org/2001/XMLSchema#",
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what country is russia close to?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.06bnz)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.06bnz ns:location.location.adjoin_s ?y .\n?y ns:location.adjoining_relationship.adjoins ?x .\n?x ns:common.topic.notable_types ns:m.01mp .\n}\n",
+        "PotentialTopicEntityMention": "russia",
+        "TopicEntityName": "Russia",
+        "TopicEntityMid": "m.06bnz",
+        "InferentialChain": [
+            "location.location.adjoin_s",
+            "location.adjoining_relationship.adjoins"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.01mp",
+                "EntityName": "Country",
+                "SourceNodeIndex": 1,
+                "NodePredicate": "common.topic.notable_types",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.06bnz"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.06bnz"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/location.location.adjoin_s"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "y"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "y"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/location.adjoining_relationship.adjoins"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/common.topic.notable_types"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.01mp"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what county is orlando fl in?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.0ply0)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.0ply0 ns:location.location.containedby ?x .\n?x ns:common.topic.notable_types ns:m.0kpym_ .\n}\n",
+        "PotentialTopicEntityMention": "orlando fl",
+        "TopicEntityName": "Orlando",
+        "TopicEntityMid": "m.0ply0",
+        "InferentialChain": [
+            "location.location.containedby"
+        ],
+        "Constraints": [
+            {
+                "Operator": "Equal",
+                "ArgumentType": "Entity",
+                "Argument": "m.0kpym_",
+                "EntityName": "US County",
+                "SourceNodeIndex": 0,
+                "NodePredicate": "common.topic.notable_types",
+                "ValueType": "String"
+            }
+        ],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0ply0"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0ply0"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/location.location.containedby"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        },
+                        {
+                            "subject": {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/common.topic.notable_types"
+                            },
+                            "object": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.0kpym_"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    },
+    {
+        "question": "what kind government does the us have?",
+        "sparql": "PREFIX ns: <http://rdf.freebase.com/ns/>\nSELECT DISTINCT ?x\nWHERE {\nFILTER (?x != ns:m.09c7w0)\nFILTER (!isLiteral(?x) OR lang(?x) = '' OR langMatches(lang(?x), 'en'))\nns:m.09c7w0 ns:location.country.form_of_government ?x .\n}\n",
+        "PotentialTopicEntityMention": "us",
+        "TopicEntityName": "United States of America",
+        "TopicEntityMid": "m.09c7w0",
+        "InferentialChain": [
+            "location.country.form_of_government"
+        ],
+        "Constraints": [],
+        "json": {
+            "queryType": "SELECT",
+            "distinct": true,
+            "variables": [
+                {
+                    "termType": "Variable",
+                    "value": "x"
+                }
+            ],
+            "where": [
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "!=",
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "x"
+                            },
+                            {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.09c7w0"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "filter",
+                    "expression": {
+                        "type": "operation",
+                        "operator": "||",
+                        "args": [
+                            {
+                                "type": "operation",
+                                "operator": "||",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "!",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "isliteral",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "operation",
+                                        "operator": "=",
+                                        "args": [
+                                            {
+                                                "type": "operation",
+                                                "operator": "lang",
+                                                "args": [
+                                                    {
+                                                        "termType": "Variable",
+                                                        "value": "x"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "termType": "Literal",
+                                                "value": "",
+                                                "language": "",
+                                                "datatype": {
+                                                    "termType": "NamedNode",
+                                                    "value": "http://www.w3.org/2001/XMLSchema#string"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "operation",
+                                "operator": "langmatches",
+                                "args": [
+                                    {
+                                        "type": "operation",
+                                        "operator": "lang",
+                                        "args": [
+                                            {
+                                                "termType": "Variable",
+                                                "value": "x"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "termType": "Literal",
+                                        "value": "en",
+                                        "language": "",
+                                        "datatype": {
+                                            "termType": "NamedNode",
+                                            "value": "http://www.w3.org/2001/XMLSchema#string"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "bgp",
+                    "triples": [
+                        {
+                            "subject": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/m.09c7w0"
+                            },
+                            "predicate": {
+                                "termType": "NamedNode",
+                                "value": "http://rdf.freebase.com/ns/location.country.form_of_government"
+                            },
+                            "object": {
+                                "termType": "Variable",
+                                "value": "x"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type": "query",
+            "prefixes": {
+                "ns": "http://rdf.freebase.com/ns/"
+            }
+        },
+        "is_typical": true
+    }
+]

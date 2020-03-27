@@ -1,0 +1,6 @@
+PREFIX ns: <http://rdf.freebase.com/ns/>
+SELECT DISTINCT ?x
+WHERE {
+FILTER (?x != ns:m.09c7w0)
+ns:m.09c7w0 ns:location.country.form_of_government ?x .
+}
