@@ -1,11 +1,14 @@
 import json
 import progressbar
 import copy
+import os
 def read_SPARQL(data_path, do_parsing):
+    data = []
     if do_parsing == True:
-        f = open(data_path, 'r')
-        data = json.load(f) ### data为list->dict类型
-        #print('type(data): ', type(data))
+        with open(data_path, encoding='utf-8') as fin:
+            for l in fin:
+                data.append(json.loads(l))### data为list->dict类型
+            #print('type(data): ', type(data))
         '''
         ### WebQSP
         new_data = []
@@ -61,14 +64,14 @@ def read_SPARQL(data_path, do_parsing):
 
     return data
 
-import os
 def SPARQL_to_JSON(data, do_parsing):
     if do_parsing == True:
         ### 默认SPARQL全部有值
         number_parsable = 0
         number_unparsable = 0
         print('Start transforming SPARQL to JSON')
-        progress_bar = progressbar.ProgressBar(max_value=len(data))
+        progress_bar = progressbar.ProgressBar(maxval=len(data))
+        progress_bar.start()
         for i in range(len(data)):
             '''
             ### WebQSP
@@ -160,13 +163,15 @@ def JSON_to_QueryGraph(data, do_parsing):
         number_no_topic_entity_and_no_core_inferential_chain = 0
         number_no_constraints = 0
         number_all_pass = 0
-        progress_bar = progressbar.ProgressBar(max_value=len(data))
+        progress_bar = progressbar.ProgressBar(maxval=len(data))
+        progress_bar.start()
         for i, data_temp in enumerate(data):
             ### data_temp是引用
             object_JSON_to_QueryGraph = class_JSON_to_QueryGraph()
             query_graph_temp = None
             topic_entity_temp = None
             core_inferential_chain_temp = None
+            all_core_chains = None
             constraints_temp = None
             if data_temp['json'] == None: ### 原SPARQL无法解析成JSON
                 print("\"id\": %d, 原SPARQL无法解析成JSON\n" % (data_temp['id']))
@@ -184,18 +189,21 @@ def JSON_to_QueryGraph(data, do_parsing):
                 query_graph_temp = copy.deepcopy(object_JSON_to_QueryGraph.graph)
                 topic_entity_temp = copy.deepcopy(object_JSON_to_QueryGraph.get_topic_entity())
                 core_inferential_chain_temp = copy.deepcopy(object_JSON_to_QueryGraph.get_core_inferential_chain())
+                all_core_chains = copy.deepcopy(object_JSON_to_QueryGraph.get_all_core_chains())
                 number_no_constraints += 1
             else:
                 #print("\"id\": %d, 解析成功\n" % (data_temp['id']))
                 query_graph_temp = copy.deepcopy(object_JSON_to_QueryGraph.graph)
                 topic_entity_temp = copy.deepcopy(object_JSON_to_QueryGraph.get_topic_entity())
                 core_inferential_chain_temp = copy.deepcopy(object_JSON_to_QueryGraph.get_core_inferential_chain())
+                all_core_chains = copy.deepcopy(object_JSON_to_QueryGraph.get_all_core_chains())
                 constraints_temp = copy.deepcopy(object_JSON_to_QueryGraph.get_constraints())
                 number_all_pass += 1
 
             data_temp.update({'graph': query_graph_temp})
             data_temp.update({'topic_entity': topic_entity_temp})
             data_temp.update({'core_inferential_chain': core_inferential_chain_temp})
+            data_temp.update({'core_chain_list': all_core_chains})
             data_temp.update({'constraints': constraints_temp})
 
             progress_bar.update(i + 1)
@@ -232,6 +240,7 @@ class class_JSON_to_QueryGraph:
         self.and_not = ['and', 'not']
         self.topic_entity = None
         self.core_inferential_chain = None
+        self.all_core_chains = None
         self.constraints = None
 
     ### generate_graph()返回True，则建立成功；generate_graph()返回False，则建立失败
@@ -565,6 +574,9 @@ class class_JSON_to_QueryGraph:
         self.topic_entity = topic_entity
         self.core_inferential_chain = core_inferential_chain
 
+    def get_all_core_chains(self):
+        return self.all_core_chains
+
     def get_topic_entity(self):
         if self.topic_entity == None:
             if self.graph == None:
@@ -594,6 +606,7 @@ class class_JSON_to_QueryGraph:
             self.queue = []
             self.queue.append({'value': query_variables, 'path': []})
             visited_vertex.append(copy.deepcopy(self.queue[-1]['value'])) ### 变量名前有'?'
+            self.all_core_chains = []
             while len(self.queue) > 0:
                 ### copy.deepcopy() 避免修改一方的同时，无意间修改另一方
                 queue_temp = copy.deepcopy(self.queue[0])
@@ -611,14 +624,21 @@ class class_JSON_to_QueryGraph:
                     ### topic entity必须是NamedNode，且不能是type
                     elif edge_temp['endpoint']['termType'] == 'NamedNode':
                         ### topic entity不能是 type
+                        '''
                         for edge_temp_temp in graph_temp['and'][edge_temp['endpoint']['value']]['edge']:
                             if ((edge_temp_temp['type'] == 'triple') and \
                                 (len(edge_temp_temp['predicate']['value']) >= 5) and \
                                 (edge_temp_temp['predicate']['value'][-5:] == '#type')):
                                 break
+                        '''
+                        if False:
+                            print('false')
                         else:
                             ### self.topic_entity 的类型是 str
-                            self.topic_entity = self.append_question_mark(copy.deepcopy(edge_temp['endpoint']['value']))
+
+                            topic_entity = self.append_question_mark(copy.deepcopy(edge_temp['endpoint']['value']))
+                            if self.topic_entity == None:
+                                self.topic_entity = topic_entity
                             ### self.core_inferential_chain 的类型是 list -> dict，字典数据是三元组 {'subject': str, 'predicate': str, 'object': str}
                             if edge_temp['role'] == 'subject':
                                 '''
@@ -635,7 +655,10 @@ class class_JSON_to_QueryGraph:
                                     'predicate': copy.deepcopy(edge_temp['predicate']['value']),
                                     'object': self.append_question_mark(copy.deepcopy(edge_temp['endpoint']['value']))
                                 })
-                                self.core_inferential_chain = path_temp
+                                path_temp.reverse()
+                                self.all_core_chains.append({'chain':path_temp, 'topic_entity': topic_entity})
+                                if self.core_inferential_chain == None:
+                                    self.core_inferential_chain = path_temp
                             elif edge_temp['role'] == 'object':
                                 path_temp = copy.deepcopy(queue_temp['path'])
                                 path_temp.append({
@@ -643,16 +666,17 @@ class class_JSON_to_QueryGraph:
                                     'predicate': copy.deepcopy(edge_temp['predicate']['value']),
                                     'object': self.append_question_mark(copy.deepcopy(queue_temp['value']))
                                 })
-                                self.core_inferential_chain = path_temp
+                                path_temp.reverse()
+                                self.all_core_chains.append({'chain': path_temp, 'topic_entity': topic_entity})
+                                if self.core_inferential_chain == None:
+                                    self.core_inferential_chain = path_temp
                             else: ### 其他未知情况
                                 print('三元组的顶点的角色未知（非subject、非object）')
-                                self.topic_entity = None
-                                self.core_inferential_chain = None
-                                return None
+
+                                #return None
 
                             ### 原本path的顺序是 查询变量 -> topic entity。因此需要对列表进行翻转，变成 topic entity -> 查询变量
-                            self.core_inferential_chain.reverse()
-                            return self.topic_entity
+
                     
                     ### 'Literal'是不能作为topic entity
                     elif edge_temp['endpoint']['termType'] == 'Literal':
@@ -663,6 +687,9 @@ class class_JSON_to_QueryGraph:
                     else:
                         if edge_temp['role'] == 'subject':
                             path_temp = copy.deepcopy(queue_temp['path'])
+                            if 'value' not in edge_temp['predicate']:
+                                print('predicate format strange:' + str(edge_temp['predicate']))
+                                continue
                             path_temp.append({
                                 'subject': self.append_question_mark(copy.deepcopy(queue_temp['value'])),
                                 'predicate': copy.deepcopy(edge_temp['predicate']['value']),
@@ -677,10 +704,8 @@ class class_JSON_to_QueryGraph:
                             })
                         else:  ### 其他未知情况
                             print('三元组的顶点的角色未知（非subject、非object）')
-                            self.topic_entity = None
-                            self.core_inferential_chain = None
-                            return None
 
+                            #return None
                         self.queue.append({
                             'value': copy.deepcopy(edge_temp['endpoint']['value']), 
                             'path': path_temp
@@ -688,10 +713,13 @@ class class_JSON_to_QueryGraph:
                         visited_vertex.append(copy.deepcopy(self.queue[-1]['value'])) ### 变量名前有'?'
         
             else:  ### 其他未知情况
-                print('从查询变量出发，无法搜索到合适的topic entity')
-                self.topic_entity = None
-                self.core_inferential_chain = None
-                return None
+                if self.core_inferential_chain == None:
+                    print('从查询变量出发，无法搜索到合适的topic entity')
+                    self.topic_entity = None
+                    self.core_inferential_chain = None
+                    return None
+                else:
+                    return self.topic_entity
         
         else:
             return self.topic_entity
@@ -921,10 +949,11 @@ class class_JSON_to_QueryGraph:
             return vertex
 
 if __name__=="__main__":
-    data_path = 'data/QALD/train-multilingual-4-9.json'
-    #data_path = 'data/QALD/train-multilingual-merged.json'
-    do_read_SPARQL = False
-    do_SPARQL_to_JSON = False
+    #data_path = 'data/QALD/train-multilingual-4-9.jsonl'
+    data_path = 'data/QALD/test-multilingual-4-9.jsonl'
+
+    do_read_SPARQL = True
+    do_SPARQL_to_JSON = True
     do_JSON_to_QueryGraph = True
 
     data = read_SPARQL(data_path, do_read_SPARQL)

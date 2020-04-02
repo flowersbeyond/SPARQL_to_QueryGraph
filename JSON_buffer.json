@@ -4,7 +4,7 @@
     "variables": [
         {
             "termType": "Variable",
-            "value": "uri"
+            "value": "web"
         }
     ],
     "where": [
@@ -14,38 +14,72 @@
                 {
                     "subject": {
                         "termType": "Variable",
-                        "value": "uri"
+                        "value": "sub"
                     },
                     "predicate": {
                         "termType": "NamedNode",
-                        "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+                        "value": "http://dbpedia.org/ontology/numberOfEmployees"
                     },
                     "object": {
-                        "termType": "NamedNode",
-                        "value": "http://dbpedia.org/ontology/Country"
+                        "termType": "Variable",
+                        "value": "obj"
                     }
                 },
                 {
                     "subject": {
                         "termType": "Variable",
-                        "value": "uri"
+                        "value": "sub"
                     },
                     "predicate": {
                         "termType": "NamedNode",
-                        "value": "http://dbpedia.org/ontology/language"
+                        "value": "http://xmlns.com/foaf/0.1/homepage"
                     },
                     "object": {
-                        "termType": "NamedNode",
-                        "value": "http://dbpedia.org/resource/Japanese_language"
+                        "termType": "Variable",
+                        "value": "web"
                     }
                 }
             ]
+        },
+        {
+            "type": "filter",
+            "expression": {
+                "type": "operation",
+                "operator": ">",
+                "args": [
+                    {
+                        "type": "functionCall",
+                        "function": {
+                            "termType": "NamedNode",
+                            "value": "http://www.w3.org/2001/XMLSchema#integer"
+                        },
+                        "args": [
+                            {
+                                "termType": "Variable",
+                                "value": "obj"
+                            }
+                        ],
+                        "distinct": false
+                    },
+                    {
+                        "termType": "Literal",
+                        "value": "500000",
+                        "language": "",
+                        "datatype": {
+                            "termType": "NamedNode",
+                            "value": "http://www.w3.org/2001/XMLSchema#integer"
+                        }
+                    }
+                ]
+            }
         }
     ],
     "type": "query",
     "prefixes": {
         "dbo": "http://dbpedia.org/ontology/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "res": "http://dbpedia.org/resource/"
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
     }
 }
